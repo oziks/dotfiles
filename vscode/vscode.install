@@ -8,13 +8,31 @@ configs=(
   "snippets"
 )
 
-for config in $configs; do
+for config in "${configs[@]}"; do
   source="$HOME/.dotfiles/vscode/$config"
   target="$HOME/Library/Application Support/Code/User/$config"
 
   if [ -e "$target" ] || [ -h "$target" ]; then
-    rm "$target"
+    rm -rf "$target"
   fi
 
   ln -sfF "$source" "$target"
+done
+
+
+extensions=(
+  "EditorConfig.EditorConfig"
+  "burkeholland.simple-react-snippets"
+  "cssho.vscode-svgviewer"
+  "dbaeumer.vscode-eslint"
+  "dracula-theme.theme-dracula"
+  "esbenp.prettier-vscode"
+  "formulahendry.auto-rename-tag"
+  "ionutvmi.path-autocomplete"
+  "teabyii.ayu"
+)
+
+
+for extension in "${extensions[@]}"; do
+  code --install-extension "$extension" > /dev/null 2>&1
 done
