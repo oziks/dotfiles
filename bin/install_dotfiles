@@ -1,0 +1,51 @@
+#!/bin/sh
+
+set -e
+
+echo ''
+
+info () {
+  printf "\r  [ \033[00;34m..\033[0m ] $1\n"
+}
+
+success () {
+  printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
+}
+
+fail () {
+  printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
+  echo ''
+  exit
+}
+
+install_dotfiles () {
+  info 'installing dotfiles'
+
+  symlinks=$(find ~/.dotfiles -name "*.symlink" -not -path "*.git*")
+
+  for file in $symlinks; do
+    basename=$(basename $file .symlink)
+    target="$HOME/.$basename"
+
+    if [ -e "$target" ] || [ -h "$target" ]; then
+      rm $target
+    fi
+
+    ln -s "$file" "$target"
+    success "linked $target"
+  done
+}
+
+execute_install () {
+  info 'executing installation files'
+
+  installer=$(find ~/.dotfiles -name "*.install" -not -path "*.git*")
+
+  for file in $installer; do
+    sh -c "$file"
+    success "executed $file"
+  done
+}
+
+install_dotfiles
+execute_install

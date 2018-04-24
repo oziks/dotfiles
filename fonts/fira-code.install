@@ -1,0 +1,4 @@
+#!/bin/sh
+
+brew tap caskroom/fonts > /dev/null
+brew cask reinstall font-fira-code > /dev/null

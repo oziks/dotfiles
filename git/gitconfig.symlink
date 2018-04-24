@@ -1,0 +1,31 @@
+[user]
+  name = Morgan Brunot
+  email = brunot.morgan@gmail.com
+
+[apply]
+  ignorewhitespace = change
+  whitespace = nowarn
+
+[push]
+  default = upstream
+  rebase = true
+  followTags = true
+
+[color]
+  interactive = true
+  branch = true
+  status = true
+
+[core]
+	mergeoptions = --no-edit
+  excludesfile = ~/.gitignore_global
+
+[alias]
+  branch-name = "!git rev-parse --abbrev-ref HEAD"
+  publish = "!git push -u origin $(git branch-name)"
+  unpublish = "!git push origin :$(git branch-name)"
+  diffc = "diff --cached"
+  amend = "!git commit --amend --no-edit"
+  st = "status"
+  co = "checkout"
+  update = "fetch origin --prune"

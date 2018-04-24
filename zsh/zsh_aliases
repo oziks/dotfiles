@@ -1,0 +1,5 @@
+# Common shortcuts
+alias reload="source $HOME/.zshrc"
+
+# Project shortcuts
+alias get_editorconfig="cat $DOTFILES_DIR/zsh/templates/editorconfig > .editorconfig"

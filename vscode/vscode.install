@@ -1,0 +1,20 @@
+#!/bin/sh
+
+set -e
+
+configs=(
+  "settings.json"
+  "keybindings.json"
+  "snippets"
+)
+
+for config in $configs; do
+  source="$HOME/.dotfiles/vscode/$config"
+  target="$HOME/Library/Application Support/Code/User/$config"
+
+  if [ -e "$target" ] || [ -h "$target" ]; then
+    rm "$target"
+  fi
+
+  ln -sfF "$source" "$target"
+done
