@@ -19,16 +19,17 @@ for config in "${configs[@]}"; do
   ln -sfF "$source" "$target"
 done
 
-
 extensions=(
   "EditorConfig.EditorConfig"
+  "alefragnani.project-manager"
   "burkeholland.simple-react-snippets"
   "cssho.vscode-svgviewer"
   "dbaeumer.vscode-eslint"
   "dracula-theme.theme-dracula"
-  "esbenp.prettier-vscode"
   "formulahendry.auto-rename-tag"
   "ionutvmi.path-autocomplete"
+  "mikestead.dotenv"
+  "stevencl.addDocComments"
   "teabyii.ayu"
 )
 
