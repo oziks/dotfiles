@@ -29,3 +29,5 @@
   st = "status"
   co = "checkout"
   update = "fetch origin --prune"
+  mop = "!git branch --merged | grep -v master | grep -v dev | xargs git branch -d"
+  
